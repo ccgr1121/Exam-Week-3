@@ -23,7 +23,7 @@ public class OfflineExercises<multiChar> {
 		String result;
 		String.valueOf(input);
 
-		return result;
+		return "";
 	}
 
 
