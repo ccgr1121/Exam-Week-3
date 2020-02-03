@@ -15,9 +15,7 @@ public class OfflineExercises<multiChar> {
 	// multChar("Hi-There") → "HHHiii---TTThhheeerrreee"
 
 	public String multChar(String input) {
-		
 
-		
 //		ArrayList<multiChar>chars = new ArrayList<multiChar>();
 
 		String result;
@@ -25,7 +23,6 @@ public class OfflineExercises<multiChar> {
 
 		return "";
 	}
-
 
 	// Return the string (backwards) that is between the first and last appearance
 	// of "bert"
@@ -39,19 +36,32 @@ public class OfflineExercises<multiChar> {
 	// getBert("xxbeRTyy") → ""
 
 	public String getBert(String input) {
-		String result = "";
-		int num1 = input.indexOf("bert");
-		int num2 = input.lastIndexOf("bert");
+//		String result = "";
+//		int num1 = input.indexOf("bert");
+//		int num2 = input.lastIndexOf("bert");
+//		String subResult = input.substring(num1, num2);
+//
+//		for (int i = num2 - 1; i > num1 + 3; i--) {
+//			result += subResult.toCharArray()[i];
+//			// System.out.println(input.charAt(i) + result);
+//
+//		}
+//
+//		System.out.println(result);
+//		return result;
 
-		for (int i = num2 - 1; i > num1 + 3; i--) {
+		String x = "";
+		if (input.toLowerCase().contains("bert")) {
+			if (input.toLowerCase().substring(input.toLowerCase().indexOf("bert") + 4).contains("bert")) {
+				String y = input.toLowerCase().substring(input.toLowerCase().indexOf("bert") + 4,
+						input.toLowerCase().lastIndexOf("bert"));
+				for (int i = y.length() - 1; i >= 0; i--) {
+					x += y.toCharArray()[i];
+				}
 
-			System.out.println(input.charAt(i) + result);
+			}
 		}
-
-		System.out.println(result);
-		
-
-		return result;
+		return x;
 	}
 
 	// Given three ints, a b c, one of them is small, one is medium and one is
@@ -75,12 +85,12 @@ public class OfflineExercises<multiChar> {
 		int check1 = nums.get(2) - nums.get(1);
 		int check2 = nums.get(2) - nums.get(0);
 
-		if ((check2 * 2) == check1) {
+		if ((check1 * 2) == check2) {
 			return true;
-		} 
-		
-			return false;
 		}
+
+		return false;
+	}
 
 	// Given a string and an int n, return a string that removes n letters from the
 	// 'middle' of the string.
@@ -99,8 +109,6 @@ public class OfflineExercises<multiChar> {
 		String sub1 = input.substring(0, num1);
 		String sub2 = input.substring(num2, input.length() - 1);
 
-	
-		
 		String result = "";
 		result = sub1 + sub2;
 
@@ -118,12 +126,12 @@ public class OfflineExercises<multiChar> {
 
 		int num1 = input.indexOf("dev");
 		int num2 = input.indexOf("Dev");
-	
-		for (int i = num1 - 1; i > 1; i--) {
+
+		for (int i = num1 - 1; i > 1;) {
 			return true;
 		}
-		
-		for (int i = num2 - 1; i > 1; i--) {
+
+		for (int i = num2 - 1; i > 1;) {
 			return true;
 		}
 
@@ -167,10 +175,20 @@ public class OfflineExercises<multiChar> {
 
 	public String fizzBuzz(int arg1) {
 
-		return "";
+		if (arg1 % 3 == 0 && arg1 % 5 != 0) {
+			return "fizz";
+		} else {
+			if (arg1 % 3 != 0 && arg1 % 5 == 0) {
+				return "buzz";
+			} else {
+				if (arg1 % 3 == 0 && arg1 % 5 == 0) {
+					return "fizzbuzz";
+				} else {
+					return "null";
+				}
+			}
 		}
-
-	
+	}
 
 	// Given a string split the string into the individual numbers present
 	// then add each digit of each number to get a final value for each number
