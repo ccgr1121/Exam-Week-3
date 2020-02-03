@@ -18,10 +18,13 @@ public class OfflineExercises<multiChar> {
 
 //		ArrayList<multiChar>chars = new ArrayList<multiChar>();
 
-		String result;
-		String.valueOf(input);
+		String[] oldStr = input.split("");
+		String newStr = new String();
+		for (String c : oldStr) {
+			newStr += c + c + c;
+		}
 
-		return "";
+		return newStr;
 	}
 
 	// Return the string (backwards) that is between the first and last appearance
@@ -102,17 +105,23 @@ public class OfflineExercises<multiChar> {
 	// nMid("Chocolate", 1) → "Choclate"
 
 	public String nMid(String input, int a) {
-		int mid = input.length() / 2 - 1;
-		int num1 = mid - (a / 1);
-		int num2 = mid + (a / 2);
+//		int mid = input.length() / 2 - 1;
+//		int num1 = mid - (a / 1);
+//		int num2 = mid + (a / 2);
+//
+//		String sub1 = input.substring(0, num1);
+//		String sub2 = input.substring(num2, input.length() - 1);
+//
+//		String result = "";
+//		result = sub1 + sub2;
 
-		String sub1 = input.substring(0, num1);
-		String sub2 = input.substring(num2, input.length() - 1);
+		int len = input.length();
+		int midIndex = len / 2;
+		int offset = a / 2;
+		String oldStrStart = input.substring(0, (midIndex - offset));
+		String oldStrEnd = input.substring((len - midIndex + offset), len);
 
-		String result = "";
-		result = sub1 + sub2;
-
-		return result;
+		return oldStrStart + oldStrEnd;
 	}
 
 	// Given a string, return true if it ends in "dev". Ignore Case
@@ -124,18 +133,20 @@ public class OfflineExercises<multiChar> {
 
 	public boolean endsDev(String input) {
 
-		int num1 = input.indexOf("dev");
-		int num2 = input.indexOf("Dev");
+//		int num1 = input.indexOf("dev");
+//		int num2 = input.indexOf("Dev");
+//
+//		for (int i = num1 - 1; i > 1;) {
+//			return true;
+//		}
+//
+//		for (int i = num2 - 1; i > 1;) {
+//			return true;
+//		}
 
-		for (int i = num1 - 1; i > 1;) {
-			return true;
-		}
+	return input.toLowerCase().endsWith("dev");
+		
 
-		for (int i = num2 - 1; i > 1;) {
-			return true;
-		}
-
-		return false;
 	}
 
 	// Given a string, return the length of the largest "block" in the string.
@@ -160,7 +171,19 @@ public class OfflineExercises<multiChar> {
 	// amISearch("I have been in Amsterdam") → 0
 
 	public int amISearch(String arg1) {
-		return 0;
+
+		int counter = 0;
+		String lowerCaseArg = arg1.toLowerCase();
+
+
+		String[] ary = lowerCaseArg.split(" ");
+		for (String element : ary) {
+			if (element.contentEquals("am")) {
+				counter++;
+			}
+		}
+
+		return counter;
 
 	}
 
@@ -206,6 +229,16 @@ public class OfflineExercises<multiChar> {
 
 	public int largest(String arg1) {
 
+		String[] ary = arg1.split(" ");
+		for (String num : ary) {
+			String[] numAry = num.split("");
+			for (String c : numAry) {
+				int strAsInt = Integer.parseInt(c);
+				System.out.println(strAsInt);
+			}
+		}
+
 		return 0;
 	}
+
 }
